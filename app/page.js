@@ -63,7 +63,7 @@ export default function Home() {
           />
         </td>
         <td>
-          {contact.name}
+          <Link href="/contacts">{contact.name}</Link> 
         </td>
         <td>{contact.email}</td>
         <td>{contact.Phone_number}</td>

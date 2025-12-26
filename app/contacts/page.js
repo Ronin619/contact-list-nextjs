@@ -6,9 +6,7 @@ export default function Contacts() {
   
   return (
     <div>
-      {contacts.map((contact) => (
-        <p key={contact.phoneNumber}>{contact.name}</p>
-    ))}
+      <h1>Hello!</h1>
     </div>
   )
 }
