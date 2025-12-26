@@ -112,3 +112,14 @@ a {
   text-align: center
 }
 
+.roundImage {
+  border-radius: 50%;
+}
+
+.editBtn {
+  border: none;      
+  outline: none;       
+  background: none;    
+  cursor: pointer; 
+  color: blue;
+}

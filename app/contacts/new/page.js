@@ -6,6 +6,7 @@ export default function AddContact() {
     <div>
       <h2>Let&apos;s add a contact!!!!</h2>
       <Link href="/">Back</Link>
+      <Link href="/contacts">contact list</Link>
     </div>
   )
 }
