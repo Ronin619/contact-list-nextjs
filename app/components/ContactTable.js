@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ContactTable({contacts, showEdit}) {
   return (
@@ -24,7 +25,11 @@ export default function ContactTable({contacts, showEdit}) {
                               className="roundImage"
                             />
                           </td>
-                          <td>{contact.name}</td>
+                          <td>
+                            <Link href="/contacts">
+                              {contact.name}
+                            </Link>
+                          </td>
                           <td>{contact.email}</td>
                           <td>{contact.Phone_number}</td>
                           {showEdit && (

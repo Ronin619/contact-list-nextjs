@@ -44,8 +44,8 @@ export default function Home() {
               />
               <button type="button" className="btn btn-primary ms-2 rounded" onClick={handleSubmit}>Search</button>
             </div>
+              <ContactTable contacts={filteredContacts} showEdit={true} />
         </div>
-        <ContactTable contacts={filteredContacts} showEdit={true} />
       </div>
     </div>
   );

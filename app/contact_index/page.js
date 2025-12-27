@@ -24,10 +24,11 @@ export default function ContactIndex() {
           ADD CONTACT
         </button>
         <div className="row justify-content-center  mt-3">
-              <div className="col-md-8"></div>
-          <ContactTable contacts={contacts} showEdit={false}/>
-          </div>
-          </div>
+            <div className="col-md-8">
+              <ContactTable contacts={contacts} showEdit={false}/>
+            </div>
+        </div>
+      </div>
 		</main>
 	);
 }
