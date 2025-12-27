@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 export default function ContactTable({contacts, showEdit}) {
@@ -17,12 +17,13 @@ export default function ContactTable({contacts, showEdit}) {
                     {contacts.map(contact => (
                         <tr key={contact.id}>
                           <td>
-                            <Image
+                            <img
                               src={contact.imageURL}
                               alt={contact.name}
-                              width={50}      
-                              height={50} 
+                              width={50}
+                              height={50}
                               className="roundImage"
+                              loading="lazy"
                             />
                           </td>
                           <td>

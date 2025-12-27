@@ -1,11 +1,35 @@
 "use client";
 import Link from "next/link";
+import { contactAPI } from "../../data/contactAPI";
+import { useState } from "react";
+import { v4 as uuid } from "uuid";
+import "../../globals.css"
 
 export default function AddContact() {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [image, setImage] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+
+  const contacts = contactAPI.contacts;
+
+  const contactInfo = {
+    id: uuid().slice(0, 8),
+    name: name, 
+    email: email, 
+    imageURL: image, 
+    Phone_number: phoneNumber === "" ? null : Number(phoneNumber)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Hello!")
+    
+    contacts.push(contactInfo)
+
+    setName("")
+    setEmail("")
+    setImage("")
+    setPhoneNumber("")
   }
 
   return (
@@ -14,20 +38,48 @@ export default function AddContact() {
         <h1>Add New Contact</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="formGroupExampleInput" className="form-label">Name</label>
-              <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Enter name"/>
+            <label htmlFor="nameInput" className="form-label">Name</label>
+              <input 
+                type="text" 
+                className="form-control" 
+                id="nameInput" 
+                placeholder="Enter name"
+                value={name} 
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
           <div className="mb-3">
-            <label htmlFor="formGroupExampleInput2" className="form-label">Email</label>
-            <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Enter email"/>
+            <label htmlFor="emailInput" className="form-label">Email</label>
+            <input 
+              type="email" 
+              className="form-control" 
+              id="emailInput" 
+              placeholder="Enter email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="formGroupExampleInput3" className="form-label">Image URL</label>
-            <input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Enter image url"/>
+            <label htmlFor="imageInput" className="form-label">Image URL</label>
+            <input 
+              type="text" 
+              className="form-control" 
+              id="imageInput" 
+              placeholder="Enter image url"
+              value={image} 
+              onChange={(e) => setImage(e.target.value)}
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="formGroupExampleInput4" className="form-label">Phone Number</label>
-            <input type="text" className="form-control" id="formGroupExampleInput4" placeholder="Enter phone number"/>
+            <label htmlFor="phoneNumberInput" className="form-label">Phone Number</label>
+            <input 
+              type="number" 
+              className="form-control no-arrows" 
+              id="phoneNumberInput" 
+              placeholder="Enter phone number"
+              value={phoneNumber} 
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
           </div>
           <div className="d-flex align-items-center gap-5">
             <Link href="/contact_index">Back</Link>
