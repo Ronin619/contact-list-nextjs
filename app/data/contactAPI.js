@@ -11,5 +11,12 @@ export const contactAPI = {
     imageURL: "https://art.ngfiles.com/images/6824000/6824270_2161945_jonthetast_hello-john-doe.2b9cb677b8d46d67d3fedcac558459c5.webp?f1751291043", 
     Phone_number: "7185559401" 
   },
+    { 
+    id: uuid().slice(0, 8),
+    name: "Jane Doe", 
+    email: "JADoe@gmail.com", 
+    imageURL: "https://m.media-amazon.com/images/I/71WbcekHTbL._AC_UF894,1000_QL80_.jpg", 
+    Phone_number: "7185588392" 
+  },
  ] 
 }

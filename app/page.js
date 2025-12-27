@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { contactAPI } from "./data/contactAPI";
+import  ContactTable  from "./components/ContactTable";
 import Image from "next/image";
 import "./globals.css";
 
@@ -13,6 +14,11 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(!searchTerm.trim()) {
+      setFilteredContacts([]);
+      return;
+    }
 
     const filteredResult= contacts.filter(contact => 
       contact.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -39,47 +45,7 @@ export default function Home() {
               <button type="button" className="btn btn-primary ms-2 rounded" onClick={handleSubmit}>Search</button>
             </div>
         </div>
-        <table className="table mt-5">
-  <thead>
-    <tr>
-      <th scope="col">Profile Pic</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-   {filteredContacts.length > 0 ? (
-    filteredContacts.map(contact => (
-      <tr key={contact.id}>
-        <td>
-          <Image
-            src={contact.imageURL}
-            alt={contact.name}
-            width={50}      
-            height={50} 
-            className="roundImage"
-          />
-        </td>
-        <td>
-          <Link href="/contacts">{contact.name}</Link> 
-        </td>
-        <td>{contact.email}</td>
-        <td>{contact.Phone_number}</td>
-        <td><button type="button" className="editBtn">Edit</button>
-        </td>
-      </tr>
-    ))
-  ) : (
-    <tr>
-      <td colSpan="4" className="text-center">
-        No results
-      </td>
-    </tr>
-  )}
-  </tbody>
-</table>
+        <ContactTable contacts={filteredContacts} showEdit={true} />
       </div>
     </div>
   );

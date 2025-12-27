@@ -1,8 +1,12 @@
 "use client";
 import { useRouter } from 'next/navigation';
+import { contactAPI } from "../data/contactAPI";
+import ContactTable from "../components/ContactTable";
 
 export default function ContactIndex() {
   const router = useRouter();
+
+  const contacts = contactAPI.contacts;
 
   	const handleAddContactRoute = () => {
 		  router.push('/contacts/new');
@@ -19,17 +23,11 @@ export default function ContactIndex() {
           >
           ADD CONTACT
         </button>
-          <div className="row justify-content-center  mt-3">
-          <div className="col-md-8">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Search Contacts"
-              aria-label="Search Contacts"
-            />
+        <div className="row justify-content-center  mt-3">
+              <div className="col-md-8"></div>
+          <ContactTable contacts={contacts} showEdit={false}/>
           </div>
-        </div>
-			</div>
+          </div>
 		</main>
 	);
 }
