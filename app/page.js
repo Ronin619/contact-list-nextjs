@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { contactAPI } from "./data/contactAPI";
 import  ContactTable  from "./components/ContactTable";
-import Image from "next/image";
 import "./globals.css";
 
 export default function Home() {
