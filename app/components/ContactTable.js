@@ -27,12 +27,12 @@ export default function ContactTable({contacts, showEdit}) {
                             />
                           </td>
                           <td>
-                            <Link href="/contacts">
+                            <Link href={`/contactInfo/${contact.id}`}>
                               {contact.name}
                             </Link>
                           </td>
                           <td>{contact.email}</td>
-                          <td>{contact.Phone_number}</td>
+                          <td>{contact.phone_Number}</td>
                           {showEdit && (
                           <td><button type="button" className="editBtn">Edit</button>
                           </td>

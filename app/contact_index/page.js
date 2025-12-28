@@ -10,7 +10,7 @@ export default function ContactIndex() {
   const contacts = contactAPI.contacts;
 
   	const handleAddContactRoute = () => {
-		  router.push('/contacts/new');
+		  router.push('/contactInfo/new');
 	};
 
 	return (

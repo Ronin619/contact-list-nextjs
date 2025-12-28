@@ -18,7 +18,7 @@ export default function AddContact() {
     name: name, 
     email: email, 
     imageURL: image, 
-    Phone_number: phoneNumber === "" ? null : Number(phoneNumber)
+    phone_Number: phoneNumber === "" ? null : Number(phoneNumber)
   }
 
   const handleSubmit = (e) => {
