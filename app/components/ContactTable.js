@@ -24,7 +24,6 @@ export default function ContactTable({contacts, showEdit}) {
                               width={50}
                               height={50}
                               className="roundImage"
-                              loading="lazy"
                             />
                           </td>
                           <td>
@@ -49,11 +48,11 @@ ContactTable.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
+      email: PropTypes.string,
       imageURL: PropTypes.string,
-      phone_Number: PropTypes.number,
+      phone_Number: PropTypes.string,
     })
   ).isRequired,
-  
+
     showEdit: PropTypes.bool,
 }

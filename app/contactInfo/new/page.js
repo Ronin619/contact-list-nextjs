@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { contactAPI } from "../../data/contactAPI";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
@@ -10,6 +10,8 @@ export default function AddContact() {
   const [email, setEmail] = useState("")
   const [image, setImage] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
+
+  const router = useRouter();
 
   const contacts = contactAPI.contacts;
 
@@ -30,6 +32,8 @@ export default function AddContact() {
     setEmail("")
     setImage("")
     setPhoneNumber("")
+
+    router.push("/contact_index");
   }
 
   return (
@@ -77,12 +81,11 @@ export default function AddContact() {
               className="form-control no-arrows" 
               id="phoneNumberInput" 
               placeholder="Enter phone number"
-              value={phoneNumber} 
+              value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
           <div className="d-flex align-items-center gap-5">
-            <Link href="/contact_index">Back</Link>
             <button type="submit" className="btn btn-primary ms-5">Add New Contact</button>
           </div>
         </form>
