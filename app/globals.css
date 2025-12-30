@@ -116,12 +116,19 @@ a {
   border-radius: 50%;
 }
 
-.editBtn {
+.editBtn, .deleteBtn {
   border: none;      
   outline: none;       
   background: none;    
   cursor: pointer; 
+}
+
+.editBtn {
   color: blue;
+}
+
+.deleteBtn {
+  color: red;
 }
 
 .no-arrows::-webkit-inner-spin-button,

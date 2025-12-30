@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import PropTypes from "prop-types";
+import "../globals.css";
 
-export default function ContactTable({contacts, showEdit}) {
+export default function ContactTable({contacts}) {
   return (
                 <table className="table mt-5">
                   <thead>
@@ -33,10 +34,8 @@ export default function ContactTable({contacts, showEdit}) {
                           </td>
                           <td>{contact.email}</td>
                           <td>{contact.phone_Number}</td>
-                          {showEdit && (
-                          <td><button type="button" className="editBtn">Edit</button>
-                          </td>
-                          )}
+                          <td><button type="button" className="editBtn">Edit</button></td>
+                          <td><button type="button" className="deleteBtn">Delete</button></td>
                         </tr>))}
                     </tbody>
                   </table>
