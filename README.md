@@ -9,6 +9,7 @@ All Contacts Page
 
 - Click Home to return to the Home/Landing page
 - All your contacts will display in a table on this page
+- Clicking "Delete" will remove the contact from your list.
 - Click the "Add Contact" button to take you to the add contact form.
 - If you click on a contact's name, it will take you to the "Contact info" page.
 

@@ -43,7 +43,11 @@ export default function ContactTable({contacts}) {
                 </td>
                 <td>{contact.email}</td>
                 <td>{contact.phone_Number}</td>
-                <td><button type="button" className="editBtn">Edit</button></td>
+                <td>
+                <Link href={`/contactInfo/${contact.id}/edit`}>
+                  Edit
+                </Link>
+                  </td>
                 <td><button type="button" className="deleteBtn" onClick={() => handleDelete(contact.id)}>Delete</button></td>
               </tr>))}
           </tbody>
