@@ -15,17 +15,17 @@ export default function AddContact() {
 
   const contacts = contactAPI.contacts;
 
-  const contactInfo = {
-    id: uuid().slice(0, 8),
-    name: name, 
-    email: email, 
-    imageURL: image, 
-    phone_Number: phoneNumber === "" ? null : Number(phoneNumber)
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    const contactInfo = {
+      id: uuid().slice(0, 8),
+      name: name, 
+      email: email, 
+      imageURL: image, 
+      phone_Number: phoneNumber 
+    }
+
     contacts.push(contactInfo)
 
     setName("")
