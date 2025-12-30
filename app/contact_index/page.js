@@ -29,7 +29,7 @@ export default function ContactIndex() {
         </div>
         <div className="row justify-content-center  mt-3">
             <div className="col-md-8">
-              <ContactTable contacts={contacts} showEdit={false}/>
+              <ContactTable contacts={contacts} />
             </div>
         </div>
       </div>
