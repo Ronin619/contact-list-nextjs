@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import PropTypes from "prop-types";
 
 export default function ContactTable({contacts, showEdit}) {
   return (
@@ -41,4 +42,18 @@ export default function ContactTable({contacts, showEdit}) {
                     </tbody>
                   </table>
   )
+}
+
+ContactTable.propTypes = {
+   contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      imageURL: PropTypes.string,
+      phone_Number: PropTypes.number,
+    })
+  ).isRequired,
+  
+    showEdit: PropTypes.bool,
 }
