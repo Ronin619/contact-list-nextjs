@@ -12,6 +12,7 @@ All Contacts Page
 - Clicking "Delete" will remove the contact from your list.
 - Click the "Add Contact" button to take you to the add contact form.
 - If you click on a contact's name, it will take you to the "Contact info" page.
+- EDIT button does not have functionality at the time of this pull request.
 
 Add New Contact Page
 
