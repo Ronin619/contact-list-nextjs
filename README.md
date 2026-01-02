@@ -17,7 +17,6 @@ All Contacts Page
 Add New Contact Page
 
 - enter all inputs and click the "Add New Contact" button to submit.
-- Click the back link to return to the All Contacts page.
 
 Contact Info Page
 
