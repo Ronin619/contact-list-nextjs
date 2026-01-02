@@ -1,16 +1,15 @@
 "use client";
 import { useRouter } from 'next/navigation';
-import { contactAPI } from "../data/contactAPI";
 import ContactTable from "../components/ContactTable";
+import { useContacts } from '../context/ContactsContext'; 
 import Link from "next/link";
 
 export default function ContactIndex() {
   const router = useRouter();
+    const { contacts } = useContacts();
 
-  const contacts = contactAPI.contacts;
-
-  	const handleAddContactRoute = () => {
-		  router.push('/contactInfo/new');
+  const handleAddContactRoute = () => {
+		router.push('/contactInfo/new');
 	};
 
 	return (
@@ -29,7 +28,11 @@ export default function ContactIndex() {
         </div>
         <div className="row justify-content-center  mt-3">
             <div className="col-md-8">
-              <ContactTable contacts={contacts} />
+              <ContactTable 
+                contacts={contacts}
+                showEdit={false}
+                showDelete={false}
+             />
             </div>
         </div>
       </div>

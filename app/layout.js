@@ -1,4 +1,5 @@
 'use client';
+import { ContactsProvider } from './context/ContactsContext';
 
 export default function RootLayout({ children }) {
   return (
@@ -9,9 +10,12 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
     </head>
-     <body>
-      {children}
+    <body>
+      <ContactsProvider>
+        {children}
+      </ContactsProvider>
     </body>
     </html>
   )
 }
+
