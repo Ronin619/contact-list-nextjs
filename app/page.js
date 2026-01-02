@@ -7,25 +7,31 @@ import "./globals.css";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredContacts, setFilteredContacts] = useState([]);
+  const [allContacts] = useState(contactAPI.contacts);
+  const [displayedContacts, setDisplayedContacts] = useState([]);
 
-  const contacts = contactAPI.contacts;
 
-  const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(!searchTerm.trim()) {
-      setFilteredContacts([]);
+    if (!searchTerm.trim()) {
+      setDisplayedContacts([]);
       return;
     }
 
-    const filteredResult= contacts.filter(contact => 
+    const filtered = allContacts.filter(contact =>
       contact.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    );
 
-    setFilteredContacts(filteredResult);
-    setSearchTerm("")
-  }
+    setDisplayedContacts(filtered);
+    setSearchTerm("");
+  };
+
+    const handleDelete = (id) => {
+      setDisplayedContacts(prev =>
+      prev.filter(contact => contact.id !== id)
+    );
+  };
 
   return (
     <div className="container mt-3">
@@ -44,7 +50,7 @@ export default function Home() {
               />
               <button type="button" className="btn btn-primary ms-2 rounded" onClick={handleSubmit}>Search</button>
             </div>
-              <ContactTable contacts={filteredContacts} />
+              <ContactTable contacts={displayedContacts} onDelete={handleDelete} />
         </div>
       </div>
     </div>

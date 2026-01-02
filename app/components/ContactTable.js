@@ -1,17 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { useState } from "react";
 import PropTypes from "prop-types";
 import "../globals.css";
 
-export default function ContactTable({contacts}) {
-  const [contactList, setContactList] = useState(contacts);
-
-  const handleDelete = (id) => {
-    const filteredList = contactList.filter((contact) => contact.id !== id);
-
-    setContactList(filteredList);
-  }
+export default function ContactTable({ contacts, onDelete }) {
 
   return (
     <table className="table mt-5">
@@ -25,7 +17,7 @@ export default function ContactTable({contacts}) {
         </tr>
       </thead>
          <tbody>
-            {contactList.map(contact => (
+            {contacts.map(contact => (
               <tr key={contact.id}>
                 <td>
                   <img
@@ -46,7 +38,7 @@ export default function ContactTable({contacts}) {
                 <td>
                   <button className="editBtn">Edit</button>
                   </td>
-                <td><button type="button" className="deleteBtn" onClick={() => handleDelete(contact.id)}>Delete</button></td>
+                <td><button type="button" className="deleteBtn" onClick={() => onDelete(contact.id)}>Delete</button></td>
               </tr>))}
           </tbody>
      </table>
