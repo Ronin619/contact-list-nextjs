@@ -1,15 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { contactAPI } from "./data/contactAPI";
+import { useContacts } from "./context/ContactsContext";
 import  ContactTable  from "./components/ContactTable";
 import "./globals.css";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [allContacts] = useState(contactAPI.contacts);
   const [displayedContacts, setDisplayedContacts] = useState([]);
-
+  const { contacts, deleteContact } = useContacts();
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +18,7 @@ export default function Home() {
       return;
     }
 
-    const filtered = allContacts.filter(contact =>
+    const filtered = contacts.filter(contact =>
       contact.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -27,10 +26,9 @@ export default function Home() {
     setSearchTerm("");
   };
 
-    const handleDelete = (id) => {
-      setDisplayedContacts(prev =>
-      prev.filter(contact => contact.id !== id)
-    );
+const handleDelete = (id) => {
+  deleteContact(id); 
+  setDisplayedContacts(prev => prev.filter(contact => contact.id !== id));
   };
 
   return (
@@ -50,7 +48,12 @@ export default function Home() {
               />
               <button type="button" className="btn btn-primary ms-2 rounded" onClick={handleSubmit}>Search</button>
             </div>
-              <ContactTable contacts={displayedContacts} onDelete={handleDelete} />
+              <ContactTable 
+                contacts={displayedContacts} 
+                onDelete={handleDelete}  
+                showEdit
+                showDelete
+              />
         </div>
       </div>
     </div>
