@@ -3,7 +3,11 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import "../globals.css";
 
-export default function ContactTable({ contacts, onDelete }) {
+export default function ContactTable({ 
+  contacts, onDelete, 
+  showEdit = false,
+  showDelete = false 
+}) {
 
   return (
     <table className="table mt-5">
@@ -36,9 +40,20 @@ export default function ContactTable({ contacts, onDelete }) {
                 <td>{contact.email}</td>
                 <td>{contact.phone_Number}</td>
                 <td>
-                  <button className="editBtn">Edit</button>
+                  {showEdit && (
+                    <button className="editBtn">Edit</button>
+                  )}
                   </td>
-                <td><button type="button" className="deleteBtn" onClick={() => onDelete(contact.id)}>Delete</button></td>
+                <td>
+                  {showDelete && onDelete && (
+                    <button 
+                      type="button" 
+                      className="deleteBtn" 
+                      onClick={() => onDelete(contact.id)}>
+                      Delete
+                    </button>
+                  )}
+                  </td>
               </tr>))}
           </tbody>
      </table>
@@ -55,6 +70,7 @@ ContactTable.propTypes = {
       phone_Number: PropTypes.string,
     })
   ).isRequired,
-
+    onDelete: PropTypes.func,
     showEdit: PropTypes.bool,
+    showDelete: PropTypes.bool,
 }
