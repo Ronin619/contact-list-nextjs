@@ -26,14 +26,17 @@ export default function AddContact() {
       phone_Number: phoneNumber 
     }
 
-    contacts.push(contactInfo)
+    if (name === "") {
+      return
+    } else {
+      contacts.push(contactInfo)
+      router.push("/contact_index");
+    }
 
     setName("")
     setEmail("")
     setImage("")
     setPhoneNumber("")
-
-    router.push("/contact_index");
   }
 
   return (
